@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/17 06:53:24 by sauron           ###   ########.fr       */
+/*   Updated: 2020/01/18 15:48:58 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,43 @@ static void	iso(float *x, float *y, int z)
 	prev_x = *x;
 	prev_y = *y;
 
-	*x = (prev_x - prev_y) * cos(iso_angle);
-	*y = (prev_x + prev_y) * sin(iso_angle) - z;
+	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
+	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
 }
 
 static void rotate_x(float *y, float *z, t_mlx *data)
 {
 	float prev_y;
+	float x_angle;
 
 	prev_y = *y;
-	*y = prev_y * cos(data->cam.x_angle) + *z * sin(data->cam.x_angle);
-	*z = -prev_y * sin(data->cam.x_angle) + *z * cos(data->cam.x_angle);
+	x_angle = degToRad(data->cam.x_angle);
+	*y = prev_y * cos(x_angle) + *z * sin(x_angle);
+	*z = -prev_y * sin(x_angle) + *z * cos(x_angle);
 }
 
 static void rotate_y(float *x, float *z, t_mlx *data)
 {
 	float prev_x;
+	float y_angle;
 
 	prev_x = *x;
-	*x = prev_x * cos(data->cam.y_angle) + *z * sin(data->cam.y_angle);
-	*z = -prev_x * sin(data->cam.y_angle) + *z * cos(data->cam.y_angle);
+	y_angle = degToRad(data->cam.y_angle);
+	*x = prev_x * cos(y_angle) + *z * sin(y_angle);
+	*z = -prev_x * sin(y_angle) + *z * cos(y_angle);
 }
 
 static void rotate_z(float *x, float *y, t_mlx *data)
 {
 	float prev_x;
 	float prev_y;
+	float z_angle;
 
 	prev_x = *x;
 	prev_y = *y;
-	*x = prev_x * cos(data->cam.z_angle) - prev_y * sin(data->cam.z_angle);
-	*y = prev_x * sin(data->cam.z_angle) + prev_y * cos(data->cam.z_angle);
+	z_angle = degToRad(data->cam.z_angle);
+	*x = prev_x * cos(z_angle) - prev_y * sin(z_angle);
+	*y = prev_x * sin(z_angle) + prev_y * cos(z_angle);
 }
 
 void	dda(t_mlx *data, t_point p1, t_point p2)

@@ -6,11 +6,12 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 00:42:58 by sauron            #+#    #+#             */
-/*   Updated: 2020/01/17 02:05:13 by sauron           ###   ########.fr       */
+/*   Updated: 2020/01/18 16:09:32 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+#include <stdio.h>
 
 int		move(int key, t_mlx *data)
 {
@@ -44,17 +45,23 @@ int		zoom(int key, t_mlx *data)
 int		rotate(int key, t_mlx *data)
 {
 	if (key == 0)
-		data->cam.x_angle -= 0.25;
+		data->cam.x_angle -= 10.0;
 	if (key == 2)
-		data->cam.x_angle += 0.25;
+		data->cam.x_angle += 10.0;
 	if (key == 13)
-		data->cam.y_angle += 0.25;
+		data->cam.y_angle += 10.0;
 	if (key == 1)
-		data->cam.y_angle -= 0.25;
+		data->cam.y_angle -= 10.0;
 	if (key == 12)
-		data->cam.z_angle -= 0.25;
+		data->cam.z_angle -= 10.0;
 	if (key == 14)
-		data->cam.z_angle += 0.25;
+		data->cam.z_angle += 10.0;
+	if (fabs(data->cam.x_angle) >= 360.0)
+		data->cam.x_angle = fabs(data->cam.x_angle) - (360.0);
+	if (fabs(data->cam.y_angle) >= 360.0)
+		data->cam.y_angle = fabs(data->cam.y_angle) - (360.0);
+	if (fabs(data->cam.z_angle) >= 360.0)
+		data->cam.z_angle = fabs(data->cam.z_angle) - (360.0);=
 	mlx_clear_window(data->mlx, data->window);
 	draw_image(data);
 	return (0);

@@ -6,22 +6,24 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/17 02:02:59 by sauron           ###   ########.fr       */
+/*   Updated: 2020/01/18 14:58:33 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FDF_H
 #define FDF_FDF_H
 
-//# define W 2560
-//# define H 1600
-//# define imW 2560
-//# define imH 1600
-# define W 1024
-# define H 640
-# define imW 1024
-# define imH 640
-# define iso_angle 0.523599
+# define W 2560
+# define H 1600
+# define imW 2560
+# define imH 1600
+//# define W 1024
+//# define H 640
+//# define imW 1024
+//# define imH 640
+# define iso_angle 30.0
+# define degToRad(degrees) ((degrees) * M_PI / 180)
+# define radToDeg(radians) ((radians) * 180 / M_PI)
 
 #include <stdlib.h>
 #include <math.h>
@@ -52,8 +54,6 @@ typedef struct	s_map
 	int 		mW;
 	int 		x0;
 	int 		y0;
-//	int 		xShift;
-//	int 		yShift;
 	t_point		*grid;
 }				t_map;
 
