@@ -60,7 +60,7 @@ int		rotate(int key, t_mlx *data)
 	if (fabs(data->cam.y_angle) >= 360.0)
 		data->cam.y_angle = fabs(data->cam.y_angle) - (360.0);
 	if (fabs(data->cam.z_angle) >= 360.0)
-		data->cam.z_angle = fabs(data->cam.z_angle) - (360.0);=
+		data->cam.z_angle = fabs(data->cam.z_angle) - (360.0);
 	mlx_clear_window(data->mlx, data->window);
 	draw_image(data);
 	return (0);
