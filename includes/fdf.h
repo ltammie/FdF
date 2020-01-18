@@ -25,7 +25,6 @@
 # define degToRad(degrees) ((degrees) * M_PI / 180)
 # define radToDeg(radians) ((radians) * 180 / M_PI)
 
-#include <stdlib.h>
 #include <math.h>
 #include "../minilibx/mlx.h"
 #include "../libft/libft.h"

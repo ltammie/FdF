@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include <stdio.h>
 
 int		move(int key, t_mlx *data)
 {
