@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/18 15:48:58 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/18 19:06:04 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void	dda(t_mlx *data, t_point p1, t_point p2)
 	color = (p1.z || p2.z) ? 0xff0000 : 0xffffff;
 	iso(&x, &y, z);
 	iso(&x1, &y1, z1);
+
+	x += imW / 2;
+	y += imH / 2;
+	x1 += imW / 2;
+	y1 += imH / 2;
 
 	x += data->cam.x_shift;
 	y += data->cam.y_shift;

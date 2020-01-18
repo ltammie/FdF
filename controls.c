@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 00:42:58 by sauron            #+#    #+#             */
-/*   Updated: 2020/01/18 16:09:32 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/18 18:45:59 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ void 	close_fdf(int key, t_mlx *data)
 {
 	if (key == 53)
 	{
-		mlx_destroy_image(data->mlx, data->image.img_ptr);
-		mlx_destroy_window(data->mlx,data->window);
+		free(data->map.grid);
 		exit(0);
 	}
 }

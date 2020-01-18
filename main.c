@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/17 05:48:45 by sauron           ###   ########.fr       */
+/*   Updated: 2020/01/18 18:40:13 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int 	deal_key(int key, t_mlx *data)
 {
-//	ft_putnbr(key);
-//	ft_putchar('\n');
+
 	if (key == 123 || key == 124 || key == 125 || key == 126)
 		move(key, data);
 	else if (key == 27 || key == 24)
