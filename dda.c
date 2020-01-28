@@ -6,13 +6,25 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 16:46:34 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 18:47:41 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-static void	iso(double *x, double *y, int z)
+//static void	iso(double *x, double *y, int z)
+//{
+//	double prev_x;
+//	double prev_y;
+//
+//	prev_x = *x;
+//	prev_y = *y;
+//
+//	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
+//	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
+//}
+
+static	void	cavalier(double *x, double *y, int z)
 {
 	double prev_x;
 	double prev_y;
@@ -20,8 +32,8 @@ static void	iso(double *x, double *y, int z)
 	prev_x = *x;
 	prev_y = *y;
 
-	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
-	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
+	*x = prev_x - z * cos(degToRad(oblique_angle));
+	*y = prev_y - z * sin(degToRad(oblique_angle));
 }
 
 static void rotate_x(double *y, double *z, t_mlx *data)
@@ -81,8 +93,10 @@ void	dda(t_mlx *data, t_point p1, t_point p2)
 	rotate_z(&a.x, &a.y, data);
 	rotate_z(&b.x, &b.y, data);
 	color = (p1.z || p2.z) ? 0xff0000 : 0xffffff;
-	iso(&a.x, &a.y, a.z);
-	iso(&b.x, &b.y, b.z);
+	cavalier(&a.x, &a.y, a.z);
+	cavalier(&b.x, &b.y, b.z);
+//	iso(&a.x, &a.y, a.z);
+//	iso(&b.x, &b.y, b.z);
 	a.x += imW / 2;
 	a.y += imH / 2;
 	b.x += imW / 2;

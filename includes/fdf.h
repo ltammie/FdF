@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 16:41:21 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 18:41:59 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 //# define imW 1024
 //# define imH 640
 # define iso_angle 30.0
+# define oblique_angle 45.0
 
 #include <math.h>
 #include "../minilibx/mlx.h"
@@ -73,9 +74,6 @@ typedef struct	s_mlx
 	t_image		image;
 	t_cam		cam;
 }				t_mlx;
-
-
-
 
 t_mlx			*start();
 void			read_map_data(char *filename, t_mlx *data);

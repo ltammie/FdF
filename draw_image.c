@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+#include <stdio.h>
 
 /*
  ** i for rows, j for columns
@@ -38,7 +39,7 @@ void	draw_image(t_mlx *data)
 	int j;
 
 	data->image.img_ptr = mlx_new_image(data->mlx, imW, imH);
-	data->image.img_data = (int* )mlx_get_data_addr(data->image.img_ptr,
+	data->image.img_data = (int *)mlx_get_data_addr(data->image.img_ptr,
 			&data->image.bpp, &data->image.size_l, &data->image.endian);
 	draw_background(data);
 	i = -1;

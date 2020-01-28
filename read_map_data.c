@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:38:13 by sauron            #+#    #+#             */
-/*   Updated: 2020/01/28 15:30:27 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 17:07:10 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void		read_map_data(char *filename, t_mlx *data)
 		j = 0;
 		while (j < data->map.mW)
 		{
-			data->map.grid[i * data->map.mW + j].x -= data->map.x0;
-			data->map.grid[i * data->map.mW + j].y -= data->map.y0;
+			data->map.grid[i * data->map.mW + j].x -= data->map.x0; // не помню почему не += , но с ним баги
+			data->map.grid[i * data->map.mW + j].y -= data->map.y0; // не помню почему не += , но с ним баги
 			j++;
 		}
 		i++;
