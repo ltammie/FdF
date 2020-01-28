@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 16:17:00 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:17:58 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(int argc, char **argv)
 		suicide(ERR_ARGV);
 	data = start();
 	read_map_data(argv[1], data);
-	printf("x0 = %d\ny0 = %d\n", data->map.x0, data->map.y0);
+//	printf("x0 = %d\ny0 = %d\n", data->map.x0, data->map.y0);
 	draw_image(data);
 	mlx_hook(data->window, 2, (1L<<0), key_press, data);
 	mlx_hook(data->window, 3, (1L<<1), key_release, data);

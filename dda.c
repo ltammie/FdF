@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 15:50:42 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:46:34 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,54 +61,46 @@ static void rotate_z(double *x, double *y, t_mlx *data)
 
 void	dda(t_mlx *data, t_point p1, t_point p2)
 {
-	double x;
-	double y;
-	double z;
-	double x1;
-	double y1;
-	double z1;
+	t_point a;
+	t_point b;
 	double dx;
 	double dy;
 	int max;
 	int color;
 
-	x = p1.x * data->cam.zoom;
-	y = p1.y * data->cam.zoom;
-	x1 = p2.x * data->cam.zoom;
-	y1 = p2.y * data->cam.zoom;
-	z = p1.z * data->cam.z_level;
-	z1 = p2.z * data->cam.z_level;;
-
-	rotate_x(&y, &z, data);
-	rotate_x(&y1, &z1, data);
-	rotate_y(&x, &z, data);
-	rotate_y(&x1, &z1, data);
-	rotate_z(&x, &y, data);
-	rotate_z(&x1, &y1, data);
+	a.x = p1.x * data->cam.zoom;
+	a.y = p1.y * data->cam.zoom;
+	a.z = p1.z * data->cam.z_level;
+	b.x = p2.x * data->cam.zoom;
+	b.y = p2.y * data->cam.zoom;
+	b.z = p2.z * data->cam.z_level;;
+	rotate_x(&a.y, &a.z, data);
+	rotate_x(&b.y, &b.z, data);
+	rotate_y(&a.x, &a.z, data);
+	rotate_y(&b.x, &b.z, data);
+	rotate_z(&a.x, &a.y, data);
+	rotate_z(&b.x, &b.y, data);
 	color = (p1.z || p2.z) ? 0xff0000 : 0xffffff;
-	iso(&x, &y, z);
-	iso(&x1, &y1, z1);
-
-	x += imW / 2;
-	y += imH / 2;
-	x1 += imW / 2;
-	y1 += imH / 2;
-
-	x += data->cam.x_shift;
-	y += data->cam.y_shift;
-	x1 += data->cam.x_shift;
-	y1 += data->cam.y_shift;
-
-	dx = x1 - x;
-	dy = y1 - y;
+	iso(&a.x, &a.y, a.z);
+	iso(&b.x, &b.y, b.z);
+	a.x += imW / 2;
+	a.y += imH / 2;
+	b.x += imW / 2;
+	b.y += imH / 2;
+	a.x += data->cam.x_shift;
+	a.y += data->cam.y_shift;
+	b.x += data->cam.x_shift;
+	b.y += data->cam.y_shift;
+	dx = b.x - a.x;
+	dy = b.y - a.y;
 	max = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
 	dx = dx / max;
 	dy = dy / max;
-	while ((int)(x - x1) || (int)(y - y1))
+	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		if ((int)x >= 0 && (int)x < imW && (int)y >= 0 && (int)y <imH)
-			data->image.img_data[(int)(y) * imW + (int)x] = color;
-		x += dx;
-		y += dy;
+		if ((int)a.x >= 0 && (int)a.x < imW && (int)a.y >= 0 && (int)a.y <imH)
+			data->image.img_data[(int)(a.y) * imW + (int)a.x] = color;
+		a.x += dx;
+		a.y += dy;
 	}
 }

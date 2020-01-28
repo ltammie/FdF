@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 16:13:53 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:41:21 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct	s_image
 
 typedef struct	s_point
 {
-	int 		x;
-	int 		y;
-	int			z;
+	double 		x;
+	double 		y;
+	double		z;
 	int 		color;
 }				t_point;
 
@@ -86,7 +86,6 @@ void			read_map_data(char *filename, t_mlx *data);
 
 void			dda(t_mlx *data, t_point p1, t_point p2);
 void			draw_image(t_mlx *data);
-
 
 /*
  ** ----------controls----------
