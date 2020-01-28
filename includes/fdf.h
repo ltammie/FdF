@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/18 18:35:27 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:13:53 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 //# define imW 1024
 //# define imH 640
 # define iso_angle 30.0
-# define degToRad(degrees) ((degrees) * M_PI / 180)
-# define radToDeg(radians) ((radians) * 180 / M_PI)
 
 #include <math.h>
 #include "../minilibx/mlx.h"
@@ -80,16 +78,32 @@ typedef struct	s_mlx
 
 
 t_mlx			*start();
+void			read_map_data(char *filename, t_mlx *data);
+
+/*
+ ** ----------drawing---------
+ */
 
 void			dda(t_mlx *data, t_point p1, t_point p2);
 void			draw_image(t_mlx *data);
-void			read_map_data(char *filename, t_mlx *data);
+
+
+/*
+ ** ----------controls----------
+ */
+
 int				move(int key, t_mlx *data);
 int				zoom(int key, t_mlx *data);
 int				rotate(int key, t_mlx *data);
 int 			flattening(int key, t_mlx *data);
-void			close_fdf(int key, t_mlx *data);
+void			close_fdf(t_mlx *data);
 
+/*
+ ** ----------other----------
+ */
+
+float			degToRad(float degrees);
+float			radToDeg(float radians);
 void			suicide(char *error_text);
 
 #endif

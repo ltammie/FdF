@@ -6,14 +6,14 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/18 18:40:13 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:17:00 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 #include <stdio.h>
 
-int 	deal_key(int key, t_mlx *data)
+int 	key_press(int key, t_mlx *data)
 {
 
 	if (key == 123 || key == 124 || key == 125 || key == 126)
@@ -25,14 +25,15 @@ int 	deal_key(int key, t_mlx *data)
 	else if (key == 15 || key == 3)
 		flattening(key, data);
 	else if (key == 53)
-		close_fdf(key, data);
+		close_fdf(data);
 	return (0);
 }
 
-void	suicide(char *error_text)
+int 	key_release(int key, t_mlx *data)
 {
-	ft_putstr(error_text);
-	exit(0);
+	if (key && data)
+		return (0);
+	return (0);
 }
 
 int		main(int argc, char **argv)
@@ -45,7 +46,8 @@ int		main(int argc, char **argv)
 	read_map_data(argv[1], data);
 	printf("x0 = %d\ny0 = %d\n", data->map.x0, data->map.y0);
 	draw_image(data);
-	mlx_key_hook(data->window, deal_key, data);
+	mlx_hook(data->window, 2, (1L<<0), key_press, data);
+	mlx_hook(data->window, 3, (1L<<1), key_release, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

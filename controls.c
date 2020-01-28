@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 00:42:58 by sauron            #+#    #+#             */
-/*   Updated: 2020/01/18 18:45:59 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 16:13:53 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,8 @@ int 	flattening(int key, t_mlx *data)
 	return (0);
 }
 
-void 	close_fdf(int key, t_mlx *data)
+void 	close_fdf(t_mlx *data)
 {
-	if (key == 53)
-	{
-		free(data->map.grid);
-		exit(0);
-	}
+	(void)data;
+	exit(0);
 }

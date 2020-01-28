@@ -6,16 +6,16 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/18 19:06:04 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/01/28 15:50:42 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-static void	iso(float *x, float *y, int z)
+static void	iso(double *x, double *y, int z)
 {
-	float prev_x;
-	float prev_y;
+	double prev_x;
+	double prev_y;
 
 	prev_x = *x;
 	prev_y = *y;
@@ -24,10 +24,10 @@ static void	iso(float *x, float *y, int z)
 	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
 }
 
-static void rotate_x(float *y, float *z, t_mlx *data)
+static void rotate_x(double *y, double *z, t_mlx *data)
 {
-	float prev_y;
-	float x_angle;
+	double prev_y;
+	double x_angle;
 
 	prev_y = *y;
 	x_angle = degToRad(data->cam.x_angle);
@@ -35,10 +35,10 @@ static void rotate_x(float *y, float *z, t_mlx *data)
 	*z = -prev_y * sin(x_angle) + *z * cos(x_angle);
 }
 
-static void rotate_y(float *x, float *z, t_mlx *data)
+static void rotate_y(double *x, double *z, t_mlx *data)
 {
-	float prev_x;
-	float y_angle;
+	double prev_x;
+	double y_angle;
 
 	prev_x = *x;
 	y_angle = degToRad(data->cam.y_angle);
@@ -46,11 +46,11 @@ static void rotate_y(float *x, float *z, t_mlx *data)
 	*z = -prev_x * sin(y_angle) + *z * cos(y_angle);
 }
 
-static void rotate_z(float *x, float *y, t_mlx *data)
+static void rotate_z(double *x, double *y, t_mlx *data)
 {
-	float prev_x;
-	float prev_y;
-	float z_angle;
+	double prev_x;
+	double prev_y;
+	double z_angle;
 
 	prev_x = *x;
 	prev_y = *y;
@@ -61,14 +61,14 @@ static void rotate_z(float *x, float *y, t_mlx *data)
 
 void	dda(t_mlx *data, t_point p1, t_point p2)
 {
-	float x;
-	float y;
-	float z;
-	float x1;
-	float y1;
-	float z1;
-	float dx;
-	float dy;
+	double x;
+	double y;
+	double z;
+	double x1;
+	double y1;
+	double z1;
+	double dx;
+	double dy;
 	int max;
 	int color;
 
