@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/01 07:38:05 by sauron           ###   ########.fr       */
+/*   Updated: 2020/02/01 09:24:52 by sauron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,35 @@ static	void	cavalier(double *x, double *y, int z)
 	prev_x = *x;
 	prev_y = *y;
 
-	*x = prev_x - z * cos(degToRad(oblique_angle));
-	*y = prev_y - z * sin(degToRad(oblique_angle));
+	*x = prev_x + z * 1 * cos(degToRad(oblique_angle));
+	*y = prev_y + z * 1 * sin(degToRad(oblique_angle));
+}
+
+static	void	cabinet(double *x, double *y, int z)
+{
+	double prev_x;
+	double prev_y;
+
+	prev_x = *x;
+	prev_y = *y;
+
+	*x = prev_x + z * 0.5 * cos(degToRad(oblique_angle));
+	*y = prev_y + z * 0.5 * sin(degToRad(oblique_angle));
+}
+
+static	void	perspective(double *x, double *y, double *z)
+{
+	double prev_x;
+	double prev_y;
+	double d;
+
+	prev_x = *x;
+	prev_y = *y;
+	d = 1 / (tan(degToRad(90 / 2)));
+
+	*x = prev_x / ((*z + 1) / d);
+	*y = prev_y / ((*z + 1) / d);
+	*z = d;
 }
 
 static void rotate_x(double *y, double *z, t_mlx *data)
@@ -100,6 +127,16 @@ void	dda(t_mlx *data, t_point p1, t_point p2)
 	{
 		iso(&p1.x, &p1.y, p1.z);
 		iso(&p2.x, &p2.y, p2.z);
+	}
+	else if (data->cam.projection == 'V')
+	{
+		cabinet(&p1.x, &p1.y, p1.z);
+		cabinet(&p2.x, &p2.y, p2.z);
+	}
+	else if (data->cam.projection == 'L')
+	{
+		perspective(&p1.x, &p1.y, &p1.z);
+		perspective(&p2.x, &p2.y, &p2.z);
 	}
 	p1.x += imW / 2;
 	p1.y += imH / 2;

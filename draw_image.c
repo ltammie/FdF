@@ -54,5 +54,7 @@ void	draw_image(t_mlx *data)
 				dda(data, data->map.grid[i * data->map.mW + j],data->map.grid[(i + 1) * data->map.mW + j]);
 		}
 	}
+	mlx_clear_window(data->mlx, data->window);
 	mlx_put_image_to_window(data->mlx, data->window, data->image.img_ptr, 0, 0);
+	mlx_string_put(data->mlx, data->window, 200, 200, 0xff0000, &data->cam.projection);
 }
