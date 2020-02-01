@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 17:01:21 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/01 04:41:16 by sauron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ int 	key_press(int key, t_mlx *data)
 		rotate(key, data);
 	else if (key == 15 || key == 3)
 		flattening(key, data);
+	else if (key == 35)
+	{
+		if (data->cam.projection == 'I')
+			data->cam.projection = 'C';
+		else if (data->cam.projection == 'C')
+			data->cam.projection = 'I';
+		mlx_clear_window(data->mlx, data->window);
+		draw_image(data);
+	}
 	else if (key == 53)
 		close_fdf(data);
 	return (0);

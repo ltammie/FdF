@@ -6,21 +6,21 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 18:41:59 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/01 04:35:10 by sauron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FDF_H
 #define FDF_FDF_H
 
-# define W 2560
-# define H 1600
-# define imW 2560
-# define imH 1600
-//# define W 1024
-//# define H 640
-//# define imW 1024
-//# define imH 640
+//# define W 2560
+//# define H 1600
+//# define imW 2560
+//# define imH 1600
+# define W 1024
+# define H 640
+# define imW 1024
+# define imH 640
 # define iso_angle 30.0
 # define oblique_angle 45.0
 
@@ -64,6 +64,7 @@ typedef struct	s_cam
 	double		x_angle;
 	double 		y_angle;
 	double		z_angle;
+	char 		projection;
 }				t_cam;
 
 typedef struct	s_mlx

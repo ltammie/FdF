@@ -6,23 +6,23 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 18:47:41 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/01 07:38:05 by sauron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-//static void	iso(double *x, double *y, int z)
-//{
-//	double prev_x;
-//	double prev_y;
-//
-//	prev_x = *x;
-//	prev_y = *y;
-//
-//	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
-//	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
-//}
+static void	iso(double *x, double *y, int z)
+{
+	double prev_x;
+	double prev_y;
+
+	prev_x = *x;
+	prev_y = *y;
+
+	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
+	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
+}
 
 static	void	cavalier(double *x, double *y, int z)
 {
@@ -73,48 +73,52 @@ static void rotate_z(double *x, double *y, t_mlx *data)
 
 void	dda(t_mlx *data, t_point p1, t_point p2)
 {
-	t_point a;
-	t_point b;
 	double dx;
 	double dy;
 	int max;
 	int color;
 
-	a.x = p1.x * data->cam.zoom;
-	a.y = p1.y * data->cam.zoom;
-	a.z = p1.z * data->cam.z_level;
-	b.x = p2.x * data->cam.zoom;
-	b.y = p2.y * data->cam.zoom;
-	b.z = p2.z * data->cam.z_level;;
-	rotate_x(&a.y, &a.z, data);
-	rotate_x(&b.y, &b.z, data);
-	rotate_y(&a.x, &a.z, data);
-	rotate_y(&b.x, &b.z, data);
-	rotate_z(&a.x, &a.y, data);
-	rotate_z(&b.x, &b.y, data);
 	color = (p1.z || p2.z) ? 0xff0000 : 0xffffff;
-	cavalier(&a.x, &a.y, a.z);
-	cavalier(&b.x, &b.y, b.z);
-//	iso(&a.x, &a.y, a.z);
-//	iso(&b.x, &b.y, b.z);
-	a.x += imW / 2;
-	a.y += imH / 2;
-	b.x += imW / 2;
-	b.y += imH / 2;
-	a.x += data->cam.x_shift;
-	a.y += data->cam.y_shift;
-	b.x += data->cam.x_shift;
-	b.y += data->cam.y_shift;
-	dx = b.x - a.x;
-	dy = b.y - a.y;
+	p1.x = p1.x * data->cam.zoom;
+	p1.y = p1.y * data->cam.zoom;
+	p1.z = p1.z * data->cam.z_level;
+	p2.x = p2.x * data->cam.zoom;
+	p2.y = p2.y * data->cam.zoom;
+	p2.z = p2.z * data->cam.z_level;;
+	rotate_x(&p1.y, &p1.z, data);
+	rotate_x(&p2.y, &p2.z, data);
+	rotate_y(&p1.x, &p1.z, data);
+	rotate_y(&p2.x, &p2.z, data);
+	rotate_z(&p1.x, &p1.y, data);
+	rotate_z(&p2.x, &p2.y, data);
+	if (data->cam.projection == 'C')
+	{
+		cavalier(&p1.x, &p1.y, p1.z);
+		cavalier(&p2.x, &p2.y, p2.z);
+	}
+	else if (data->cam.projection == 'I')
+	{
+		iso(&p1.x, &p1.y, p1.z);
+		iso(&p2.x, &p2.y, p2.z);
+	}
+	p1.x += imW / 2;
+	p1.y += imH / 2;
+	p2.x += imW / 2;
+	p2.y += imH / 2;
+	p1.x += data->cam.x_shift;
+	p1.y += data->cam.y_shift;
+	p2.x += data->cam.x_shift;
+	p2.y += data->cam.y_shift;
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
 	max = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
 	dx = dx / max;
 	dy = dy / max;
-	while ((int)(a.x - b.x) || (int)(a.y - b.y))
+	while ((int)(p1.x - p2.x) || (int)(p1.y - p2.y))
 	{
-		if ((int)a.x >= 0 && (int)a.x < imW && (int)a.y >= 0 && (int)a.y <imH)
-			data->image.img_data[(int)(a.y) * imW + (int)a.x] = color;
-		a.x += dx;
-		a.y += dy;
+		if ((int)p1.x >= 0 && (int)p1.x < imW && (int)p1.y >= 0 && (int)p1.y <imH)
+			data->image.img_data[(int)(p1.y) * imW + (int)p1.x] = color;
+		p1.x += dx;
+		p1.y += dy;
 	}
 }

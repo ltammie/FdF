@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/17 00:40:22 by sauron           ###   ########.fr       */
+/*   Updated: 2020/02/01 04:29:27 by sauron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ t_mlx	*start()
 	data->cam.y_angle = 0;
 	data->cam.z_angle = 0;
 	data->cam.z_level = 1;
+	data->cam.projection = 'I';
 	return (data);
 }
