@@ -6,12 +6,12 @@
 #    By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/07 19:18:13 by ltammie           #+#    #+#              #
-#    Updated: 2020/02/01 04:29:27 by sauron           ###   ########.fr        #
+#    Updated: 2020/02/09 00:28:08 by sauron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-GCC = gcc -Wall -Wextra -Werror -g
+GCC = gcc -Wall -Wextra -Werror
 NAME = fdf
 SRCS = main.c start.c dda.c draw_image.c read_map_data.c controls.c other.c
 OBJS = $(SRCS:.c=.o)
