@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include <stdio.h>
 
 /*
  ** i for rows, j for columns
