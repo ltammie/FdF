@@ -78,8 +78,8 @@ void		read_map_data(char *filename, t_mlx *data)
 		j = 0;
 		while (j < data->map.mW)
 		{
-			data->map.grid[i * data->map.mW + j].x -= data->map.x0; // не помню почему не += , но с ним баги
-			data->map.grid[i * data->map.mW + j].y -= data->map.y0; // не помню почему не += , но с ним баги
+			data->map.grid[i * data->map.mW + j].x -= data->map.x0;
+			data->map.grid[i * data->map.mW + j].y -= data->map.y0;
 			j++;
 		}
 		i++;

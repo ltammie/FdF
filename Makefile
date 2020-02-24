@@ -13,7 +13,14 @@
 
 GCC = gcc -Wall -Wextra -Werror
 NAME = fdf
-SRCS = main.c start.c dda.c draw_image.c read_map_data.c controls.c other.c
+SRCS = main.c\
+		start.c\
+		dda.c\
+		draw_image.c\
+		read_map_data.c\
+		controls.c\
+		other.c\
+		projections.c
 OBJS = $(SRCS:.c=.o)
 HEAD = -c -I fdf.h
 LIB = -L libft -lft -L minilibx -lmlx -framework OpenGL -framework Appkit

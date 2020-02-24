@@ -13,12 +13,12 @@
 #ifndef FDF_FDF_H
 #define FDF_FDF_H
 
-//# define W 2560
-//# define H 1600
+//# define WIDTH 2560
+//# define HEIGHT 1600
 //# define imW 2560
 //# define imH 1600
-# define W 1024
-# define H 640
+# define WIDTH 1024
+# define HEIGHT 640
 # define imW 1024
 # define imH 640
 # define iso_angle 30.0
@@ -28,6 +28,7 @@
 #include "../minilibx/mlx.h"
 #include "../libft/libft.h"
 #include "errors.h"
+#include "keys.h"
 
 typedef struct	s_image
 {
@@ -76,7 +77,12 @@ typedef struct	s_mlx
 	t_cam		cam;
 }				t_mlx;
 
+/*
+ ** ----------start functions---------
+ */
+
 t_mlx			*start();
+void			camera_init(t_mlx *data);
 void			read_map_data(char *filename, t_mlx *data);
 
 /*
@@ -85,7 +91,10 @@ void			read_map_data(char *filename, t_mlx *data);
 
 void			dda(t_mlx *data, t_point p1, t_point p2);
 void			draw_image(t_mlx *data);
-
+void			iso(double *x, double *y, int z);
+void			cavalier(double *x, double *y, int z);
+void			cabinet(double *x, double *y, int z);
+void			perspective(double *x, double *y, double *z);
 /*
  ** ----------controls----------
  */
@@ -100,8 +109,8 @@ void			close_fdf(t_mlx *data);
  ** ----------other----------
  */
 
-float			degToRad(float degrees);
-float			radToDeg(float radians);
+float			dtr(float degrees);
+float			rtd(float radians);
 void			suicide(char *error_text);
 
 #endif

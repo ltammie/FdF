@@ -66,7 +66,7 @@ int		rotate(int key, t_mlx *data)
 	return (0);
 }
 
-int 	flattening(int key, t_mlx *data)
+int		flattening(int key, t_mlx *data)
 {
 	if (key == 15)
 		data->cam.z_level += 1;
@@ -77,7 +77,7 @@ int 	flattening(int key, t_mlx *data)
 	return (0);
 }
 
-void 	close_fdf(t_mlx *data)
+void	close_fdf(t_mlx *data)
 {
 	(void)data;
 	exit(0);

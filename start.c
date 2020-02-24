@@ -12,6 +12,17 @@
 
 #include "includes/fdf.h"
 
+void	camera_init(t_mlx *data)
+{
+	data->cam.zoom = 1;
+	data->cam.x_shift = 0;
+	data->cam.y_shift = 0;
+	data->cam.x_angle = 0;
+	data->cam.y_angle = 0;
+	data->cam.z_angle = 0;
+	data->cam.z_level = 1;
+}
+
 t_mlx	*start()
 {
 	t_mlx *data;
@@ -20,15 +31,9 @@ t_mlx	*start()
 		suicide(ERR_MALLOC);
 	if (!(data->mlx = mlx_init()))
 		suicide(ERR_START_INIT);
-	if (!(data->window = mlx_new_window(data->mlx, W, H, "Cake is a lie")))
+	if (!(data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cake is a lie")))
 		suicide(ERR_START_WIN);
-	data->cam.zoom = 1;
-	data->cam.x_shift = 0;
-	data->cam.y_shift = 0;
-	data->cam.x_angle = 0;
-	data->cam.y_angle = 0;
-	data->cam.z_angle = 0;
-	data->cam.z_level = 1;
+	camera_init(data);
 	data->cam.projection = 'I';
 	return (data);
 }

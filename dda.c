@@ -12,64 +12,13 @@
 
 #include "includes/fdf.h"
 
-static void	iso(double *x, double *y, int z)
-{
-	double prev_x;
-	double prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-
-	*x = (prev_x - prev_y) * cos(degToRad(iso_angle));
-	*y = (prev_x + prev_y) * sin(degToRad(iso_angle)) - z;
-}
-
-static	void	cavalier(double *x, double *y, int z)
-{
-	double prev_x;
-	double prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-
-	*x = prev_x + z * 1 * cos(degToRad(oblique_angle));
-	*y = prev_y + z * 1 * sin(degToRad(oblique_angle));
-}
-
-static	void	cabinet(double *x, double *y, int z)
-{
-	double prev_x;
-	double prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-
-	*x = prev_x + z * 0.5 * cos(degToRad(oblique_angle));
-	*y = prev_y + z * 0.5 * sin(degToRad(oblique_angle));
-}
-
-static	void	perspective(double *x, double *y, double *z)
-{
-	double prev_x;
-	double prev_y;
-	double d;
-
-	prev_x = *x;
-	prev_y = *y;
-	d = 1 / (tan(degToRad(90 / 2)));
-
-	*x = prev_x / ((*z + 1) / d);
-	*y = prev_y / ((*z + 1) / d);
-	*z = d;
-}
-
 static void rotate_x(double *y, double *z, t_mlx *data)
 {
 	double prev_y;
 	double x_angle;
 
 	prev_y = *y;
-	x_angle = degToRad(data->cam.x_angle);
+	x_angle = dtr(data->cam.x_angle);
 	*y = prev_y * cos(x_angle) + *z * sin(x_angle);
 	*z = -prev_y * sin(x_angle) + *z * cos(x_angle);
 }
@@ -80,7 +29,7 @@ static void rotate_y(double *x, double *z, t_mlx *data)
 	double y_angle;
 
 	prev_x = *x;
-	y_angle = degToRad(data->cam.y_angle);
+	y_angle = dtr(data->cam.y_angle);
 	*x = prev_x * cos(y_angle) + *z * sin(y_angle);
 	*z = -prev_x * sin(y_angle) + *z * cos(y_angle);
 }
@@ -93,7 +42,7 @@ static void rotate_z(double *x, double *y, t_mlx *data)
 
 	prev_x = *x;
 	prev_y = *y;
-	z_angle = degToRad(data->cam.z_angle);
+	z_angle = dtr(data->cam.z_angle);
 	*x = prev_x * cos(z_angle) - prev_y * sin(z_angle);
 	*y = prev_x * sin(z_angle) + prev_y * cos(z_angle);
 }

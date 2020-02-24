@@ -15,24 +15,17 @@
 
 int 	key_press(int key, t_mlx *data)
 {
-
-	if (key == 123 || key == 124 || key == 125 || key == 126)
+	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_DOWN || key == ARROW_UP)
 		move(key, data);
-	else if (key == 27 || key == 24)
+	else if (key == MIN || key == PlUS)
 		zoom(key, data);
-	else if (key == 0 || key == 1 || key == 2 || key == 12 || key == 13 || key == 14)
+	else if (key == A || key == S || key == D || key == Q || key == W || key == E)
 		rotate(key, data);
-	else if (key == 15 || key == 3)
+	else if (key == R || key == F)
 		flattening(key, data);
-	else if (key == 35)
+	else if (key == P)
 	{
-		data->cam.zoom = 1;
-		data->cam.x_shift = 0;
-		data->cam.y_shift = 0;
-		data->cam.x_angle = 0;
-		data->cam.y_angle = 0;
-		data->cam.z_angle = 0;
-		data->cam.z_level = 1;
+		camera_init(data);
 		if (data->cam.projection == 'I')
 			data->cam.projection = 'C';
 		else if (data->cam.projection == 'C')
@@ -44,15 +37,8 @@ int 	key_press(int key, t_mlx *data)
 		mlx_clear_window(data->mlx, data->window);
 		draw_image(data);
 	}
-	else if (key == 53)
+	else if (key == ESC)
 		close_fdf(data);
-	return (0);
-}
-
-int 	key_release(int key, t_mlx *data)
-{
-	if (key && data)
-		return (0);
 	return (0);
 }
 
@@ -64,10 +50,8 @@ int		main(int argc, char **argv)
 		suicide(ERR_ARGV);
 	data = start();
 	read_map_data(argv[1], data);
-//	printf("x0 = %d\ny0 = %d\n", data->map.x0, data->map.y0);
 	draw_image(data);
 	mlx_hook(data->window, 2, (1L<<0), key_press, data);
-	mlx_hook(data->window, 3, (1L<<1), key_release, data);
 	mlx_loop(data->mlx);
 	return (0);
 }
