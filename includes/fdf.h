@@ -6,21 +6,21 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:20:33 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:36:58 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FDF_H
 #define FDF_FDF_H
 
-//# define WIDTH 2560
-//# define HEIGHT 1600
-//# define imW 2560
-//# define imH 1600
-# define WIDTH 1024
-# define HEIGHT 640
-# define imW 1024
-# define imH 640
+# define WIDTH 2560
+# define HEIGHT 1600
+# define imW 2360
+# define imH 1400
+//# define WIDTH 1024
+//# define HEIGHT 640
+//# define imW 1024
+//# define imH 640
 # define iso_angle 30.0
 # define oblique_angle 60.0
 
@@ -93,6 +93,7 @@ void			camera_init(t_mlx *data);
 void			image_init(t_mlx *data);
 void			read_map_data(char *filename, t_mlx *data);
 void			camera_update(t_mlx *data);
+void			draw_menu(t_mlx *d);
 
 /*
  ** ----------drawing---------

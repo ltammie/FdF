@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:01:33 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:27:02 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:36:58 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void			draw_image(t_mlx *d)
 				draw_vertical_line(d, i, j);
 		}
 	}
-	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
-	mlx_string_put(d->mlx, d->win, 200, 200, 0xff0000, &d->cam.proj);
+	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 200, 200);
+	draw_menu(d);
 }

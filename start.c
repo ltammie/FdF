@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:22:50 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:53:28 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	camera_update(t_mlx *data)
 
 void	camera_init(t_mlx *data)
 {
-	data->cam.zoom = 10;
+	data->cam.zoom = 30;
 	data->cam.x_shift = 0;
 	data->cam.y_shift = 0;
 	data->cam.z_level = 1;
@@ -40,6 +40,17 @@ void	camera_init(t_mlx *data)
 	data->cam.y_angle = 0;
 	data->cam.z_angle = 0;
 	camera_update(data);
+}
+
+void	draw_menu(t_mlx *d)
+{
+	mlx_string_put(d->mlx, d->win, 50, 50, 0xff0000, " Move image by arrows");
+	mlx_string_put(d->mlx, d->win, 50, 90, 0xff0000, " X-Rotation by A and D");
+	mlx_string_put(d->mlx, d->win, 50, 140, 0xff0000, "Y-Rotation by W and S");
+	mlx_string_put(d->mlx, d->win, 50, 180, 0xff0000, "Z-Rotation by Q and E");
+	mlx_string_put(d->mlx, d->win, 50, 220, 0xff0000, "Zoom using - and +");
+	mlx_string_put(d->mlx, d->win, 50, 260, 0xff0000, "Change Z by R and F");
+	mlx_string_put(d->mlx, d->win, 50, 300, 0xff0000, "Press ESC to exit");
 }
 
 t_mlx	*start(void)
