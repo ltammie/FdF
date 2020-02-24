@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:36:58 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:20:54 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void			close_fdf(t_mlx *data);
 
 double			dtr(double degrees);
 double			rtd(double radians);
-void			suicide(char *error_text);
+void			errors(int err);
 int				base(int c, int base);
 int				ft_atoi_base(const char *str);
 

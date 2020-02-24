@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:38:13 by sauron            #+#    #+#             */
-/*   Updated: 2020/02/24 19:21:06 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:49:21 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ static	void	get_mh_mw(int fd, t_mlx *data)
 
 	data->m.mH = 0;
 	data->m.mW = 0;
+	line = NULL;
 	while (get_next_line(fd, &line))
 	{
-		data->m.mW = ft_count_words(line, ' ');
+		if (!data->m.mW)
+			data->m.mW = ft_count_words(line, ' ');
+		if (data->m.mW != ft_count_words(line, ' '))
+			errors(2);
 		data->m.mH++;
 		free(line);
 	}
@@ -38,7 +42,8 @@ static	void	to_points(char **strarr, t_mlx *data, int j)
 		data->m.m[j * data->m.mW + i].y = j;
 		data->m.m[j * data->m.mW + i].z = ft_atoi(strarr[i]);
 		if (ft_strchr(strarr[i], ','))
-			data->m.m[j * data->m.mW + i].color = ft_atoi_base(ft_strchr(strarr[i], ',') + 1);
+			data->m.m[j * data->m.mW + i].color =
+					ft_atoi_base(ft_strchr(strarr[i], ',') + 1);
 		else if (data->m.m[j * data->m.mW + i].z == 0)
 			data->m.m[j * data->m.mW + i].color = 0xd2691e;
 		else if (data->m.m[j * data->m.mW + i].z > 0)
@@ -57,7 +62,7 @@ static	void	make_grid(int fd, t_mlx *data)
 
 	if (!(data->m.m = (t_point *)malloc(sizeof(t_point)
 			* data->m.mH * data->m.mW)))
-		suicide(ERR_MALLOC);
+		errors(0);
 	j = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -77,7 +82,9 @@ void			read_map_data(char *filename, t_mlx *data)
 	int j;
 
 	i = 0;
-	get_mh_mw(fd = open(filename, O_RDONLY), data);
+	if ((fd = open(filename, O_RDONLY)) < 0)
+		errors(1);
+	get_mh_mw(fd, data);
 	make_grid(fd = open(filename, O_RDONLY), data);
 	data->m.x0 = data->m.mW / 2;
 	data->m.y0 = data->m.mH / 2;

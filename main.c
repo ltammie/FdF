@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:19:53 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:45:09 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		main(int argc, char **argv)
 	t_mlx	*data;
 
 	if (argc != 2)
-		suicide(ERR_ARGV);
+		errors(1);
 	data = start();
 	read_map_data(argv[1], data);
 	draw_image(data);

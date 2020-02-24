@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 15:48:07 by ltammie           #+#    #+#             */
-/*   Updated: 2020/01/28 16:01:28 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:20:54 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ double	dtr(double degrees)
 double	rtd(double radians)
 {
 	return ((radians) * 180 / M_PI);
-}
-
-void	suicide(char *error_text)
-{
-	ft_putstr(error_text);
-	exit(0);
 }
 
 int		base(int c, int base)
