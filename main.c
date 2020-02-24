@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 17:38:13 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:19:53 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int		key_press(int key, t_mlx *data)
 	if (key == P)
 	{
 		camera_init(data);
-		if (data->cam.projection == 'I')
-			data->cam.projection = 'C';
-		else if (data->cam.projection == 'C')
-			data->cam.projection = 'V';
-		else if (data->cam.projection == 'V')
-			data->cam.projection = 'L';
+		if (data->cam.proj == 'I')
+			data->cam.proj = 'C';
+		else if (data->cam.proj == 'C')
+			data->cam.proj = 'V';
+		else if (data->cam.proj == 'V')
+			data->cam.proj = 'L';
 		else
-			data->cam.projection = 'I';
+			data->cam.proj = 'I';
 		mlx_clear_window(data->mlx, data->win);
 		draw_image(data);
 	}

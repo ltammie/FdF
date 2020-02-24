@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:03:19 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:19:53 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ typedef struct	s_cam
 	double 		y_cos;
 	double 		z_sin;
 	double 		z_cos;
-	char 		projection;
+	char 		proj;
 }				t_cam;
 
 typedef struct	s_mlx
 {
 	void		*mlx;
 	void		*win;
-	t_map		map;
+	t_map		m;
 	t_image		img;
 	t_cam		cam;
 }				t_mlx;
@@ -98,7 +98,7 @@ void			camera_update(t_mlx *data);
  */
 
 void			dda(t_mlx *data, t_point p1, t_point p2, int color);
-void			draw_image(t_mlx *data);
+void			draw_image(t_mlx *d);
 void			rotate_x(double *y, double *z, t_mlx *data);
 void			rotate_y(double *x, double *z, t_mlx *data);
 void			rotate_z(double *x, double *y, t_mlx *data);

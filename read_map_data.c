@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:38:13 by sauron            #+#    #+#             */
-/*   Updated: 2020/02/24 17:23:47 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:15:44 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static	void	get_mh_mw(int fd, t_mlx *data)
 {
 	char	*line;
 
-	data->map.mH = 0;
-	data->map.mW = 0;
+	data->m.mH = 0;
+	data->m.mW = 0;
 	while (get_next_line(fd, &line))
 	{
-		data->map.mW = ft_count_words(line, ' ');
-		data->map.mH++;
+		data->m.mW = ft_count_words(line, ' ');
+		data->m.mH++;
 		free(line);
 	}
 	close(fd);
@@ -34,9 +34,9 @@ static	void	to_points(char **strarr, t_mlx *data, int j)
 	i = 0;
 	while (strarr[i] != '\0')
 	{
-		data->map.m[j * data->map.mW + i].x = i;
-		data->map.m[j * data->map.mW + i].y = j;
-		data->map.m[j * data->map.mW + i].z = ft_atoi(strarr[i]);
+		data->m.m[j * data->m.mW + i].x = i;
+		data->m.m[j * data->m.mW + i].y = j;
+		data->m.m[j * data->m.mW + i].z = ft_atoi(strarr[i]);
 		i++;
 	}
 }
@@ -47,8 +47,8 @@ static	void	make_grid(int fd, t_mlx *data)
 	char	*line;
 	char	**temp;
 
-	if (!(data->map.m = (t_point *)malloc(sizeof(t_point)
-										  * data->map.mH * data->map.mW)))
+	if (!(data->m.m = (t_point *)malloc(sizeof(t_point)
+										* data->m.mH * data->m.mW)))
 		suicide(ERR_MALLOC);
 	j = 0;
 	while (get_next_line(fd, &line))
@@ -71,15 +71,15 @@ void			read_map_data(char *filename, t_mlx *data)
 	i = 0;
 	get_mh_mw(fd = open(filename, O_RDONLY), data);
 	make_grid(fd = open(filename, O_RDONLY), data);
-	data->map.x0 = data->map.mW / 2;
-	data->map.y0 = data->map.mH / 2;
-	while (i < data->map.mH)
+	data->m.x0 = data->m.mW / 2;
+	data->m.y0 = data->m.mH / 2;
+	while (i < data->m.mH)
 	{
 		j = 0;
-		while (j < data->map.mW)
+		while (j < data->m.mW)
 		{
-			data->map.m[i * data->map.mW + j].x -= data->map.x0;
-			data->map.m[i * data->map.mW + j].y -= data->map.y0;
+			data->m.m[i * data->m.mW + j].x -= data->m.x0;
+			data->m.m[i * data->m.mW + j].y -= data->m.y0;
 			j++;
 		}
 		i++;

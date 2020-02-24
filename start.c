@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 17:38:53 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:16:18 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	camera_update(t_mlx *data)
 	data->cam.z_sin = sin(dtr(data->cam.z_angle));
 	data->cam.z_cos = cos(dtr(data->cam.z_angle));
 }
-
 
 void	camera_init(t_mlx *data)
 {
@@ -46,6 +45,6 @@ t_mlx	*start(void)
 	if (!(data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fdf")))
 		suicide(ERR_START_WIN);
 	camera_init(data);
-	data->cam.projection = 'I';
+	data->cam.proj = 'I';
 	return (data);
 }
