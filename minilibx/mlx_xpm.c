@@ -117,7 +117,7 @@ void	mlx_int_xpm_set_pixel(mlx_img_list_t *img, char *data, int opp, int col, in
   dec = opp;
   while (dec--)
     {
-      if (img->image->byte_order)
+      if (img->img->byte_order)
 	*(data+x*opp+dec) = col&0xFF;
       else
 	*(data+x*opp+opp-dec-1) = col&0xFF;

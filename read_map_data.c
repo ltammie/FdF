@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:38:13 by sauron            #+#    #+#             */
-/*   Updated: 2020/02/24 17:23:24 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:23:47 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static	void	to_points(char **strarr, t_mlx *data, int j)
 	i = 0;
 	while (strarr[i] != '\0')
 	{
-		data->map.grid[j * data->map.mW + i].x = i;
-		data->map.grid[j * data->map.mW + i].y = j;
-		data->map.grid[j * data->map.mW + i].z = ft_atoi(strarr[i]);
+		data->map.m[j * data->map.mW + i].x = i;
+		data->map.m[j * data->map.mW + i].y = j;
+		data->map.m[j * data->map.mW + i].z = ft_atoi(strarr[i]);
 		i++;
 	}
 }
@@ -47,8 +47,8 @@ static	void	make_grid(int fd, t_mlx *data)
 	char	*line;
 	char	**temp;
 
-	if (!(data->map.grid = (t_point *)malloc(sizeof(t_point)
-			* data->map.mH * data->map.mW)))
+	if (!(data->map.m = (t_point *)malloc(sizeof(t_point)
+										  * data->map.mH * data->map.mW)))
 		suicide(ERR_MALLOC);
 	j = 0;
 	while (get_next_line(fd, &line))
@@ -78,8 +78,8 @@ void			read_map_data(char *filename, t_mlx *data)
 		j = 0;
 		while (j < data->map.mW)
 		{
-			data->map.grid[i * data->map.mW + j].x -= data->map.x0;
-			data->map.grid[i * data->map.mW + j].y -= data->map.y0;
+			data->map.m[i * data->map.mW + j].x -= data->map.x0;
+			data->map.m[i * data->map.mW + j].y -= data->map.y0;
 			j++;
 		}
 		i++;

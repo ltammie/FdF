@@ -69,11 +69,11 @@ You can assign different functions to the three following events:
 .br
 - The mouse button is pressed
 .br
-- A part of the window should be re-drawn
+- A part of the win should be re-drawn
 (this is called an "expose" event, and it is your program's job to handle it).
 .br
 
-Each window can define a different function for the same event.
+Each win can define a different function for the same event.
 
 The three functions
 .B mlx_key_hook
@@ -84,7 +84,7 @@ The three functions
 () work exactly the same way.
 .I funct_ptr
 is a pointer to the function you want to be called
-when an event occurs. This assignment is specific to the window defined by the
+when an event occurs. This assignment is specific to the win defined by the
 .I win_ptr
 identifier. The
 .I param
@@ -121,7 +121,7 @@ MacOS : create a small software and find out by yourself),
 .I x
 ,
 .I y
-) are the coordinates of the mouse click in the window, and
+) are the coordinates of the mouse click in the win, and
 .I button
 tells you which mouse button was pressed.
 

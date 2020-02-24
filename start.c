@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 17:35:33 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 17:38:53 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_mlx	*start(void)
 		suicide(ERR_MALLOC);
 	if (!(data->mlx = mlx_init()))
 		suicide(ERR_START_INIT);
-	if (!(data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fdf")))
+	if (!(data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fdf")))
 		suicide(ERR_START_WIN);
 	camera_init(data);
 	data->cam.projection = 'I';

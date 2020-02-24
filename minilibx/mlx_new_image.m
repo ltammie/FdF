@@ -17,7 +17,7 @@ void    *mlx_new_image(mlx_ptr_t *mlx_ptr, int width, int height)
   mlx_img_list_t        *newimg;
 
   //  if (mlx_ptr->win_list == NULL)
-  //    return (NULL);  // need at leat one window created to have openGL context and create texture
+  //    return (NULL);  // need at leat one win created to have openGL context and create texture
   if ((newimg = malloc(sizeof(*newimg))) == NULL)
     return ((void *)0);
   newimg->next = mlx_ptr->img_list;
@@ -185,6 +185,6 @@ int     mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_todel)
   free(img_todel->buffer);
   free(img_todel);
 
-  //  printf("destroy image done.\n");
+  //  printf("destroy img done.\n");
   return (0);
 }

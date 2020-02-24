@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 00:42:58 by sauron            #+#    #+#             */
-/*   Updated: 2020/02/01 04:29:27 by sauron           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:44:01 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int		move(int key, t_mlx *data)
 		data->cam.y_shift += 10;
 	if (key == 126)
 		data->cam.y_shift -= 10;
-	mlx_clear_window(data->mlx, data->window);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	draw_image(data);
 	return (0);
 }
@@ -36,7 +37,8 @@ int		zoom(int key, t_mlx *data)
 	}
 	if (key == 24)
 		data->cam.zoom++;
-	mlx_clear_window(data->mlx, data->window);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	draw_image(data);
 	return (0);
 }
@@ -62,7 +64,8 @@ int		rotate(int key, t_mlx *data)
 	if (fabs(data->cam.z_angle) >= 360.0)
 		data->cam.z_angle = fabs(data->cam.z_angle) - (360.0);
 	camera_update(data);
-	mlx_clear_window(data->mlx, data->window);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	draw_image(data);
 	return (0);
 }
@@ -73,13 +76,16 @@ int		flattening(int key, t_mlx *data)
 		data->cam.z_level += 1;
 	if (key == 3)
 		data->cam.z_level -= 1;
-	mlx_clear_window(data->mlx, data->window);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	draw_image(data);
 	return (0);
 }
 
 void	close_fdf(t_mlx *data)
 {
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	(void)data;
 	exit(0);
 }

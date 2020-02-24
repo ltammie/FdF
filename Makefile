@@ -21,7 +21,8 @@ SRCS = main.c\
 		controls.c\
 		other.c\
 		projections.c\
-		rotations.c
+		rotations.c\
+		convert_point.c
 OBJS = $(SRCS:.c=.o)
 HEAD = -c -I fdf.h
 LIB = -L libft -lft -L minilibx -lmlx -framework OpenGL -framework Appkit

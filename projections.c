@@ -12,7 +12,7 @@
 
 #include "includes/fdf.h"
 
-void	iso(double *x, double *y, int z)
+void	iso(double *x, double *y, double z)
 {
 	double prev_x;
 	double prev_y;
@@ -23,7 +23,7 @@ void	iso(double *x, double *y, int z)
 	*y = (prev_x + prev_y) * sin(dtr(iso_angle)) - z;
 }
 
-void	cavalier(double *x, double *y, int z)
+void	cavalier(double *x, double *y, double z)
 {
 	double prev_x;
 	double prev_y;
@@ -34,7 +34,7 @@ void	cavalier(double *x, double *y, int z)
 	*y = prev_y + z * 1 * sin(dtr(oblique_angle));
 }
 
-void	cabinet(double *x, double *y, int z)
+void	cabinet(double *x, double *y, double z)
 {
 	double prev_x;
 	double prev_y;

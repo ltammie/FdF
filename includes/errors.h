@@ -15,7 +15,7 @@
 
 # define ERR_ARGV "no or too much arguments were passed"
 # define ERR_START_INIT "starting initialization error"
-# define ERR_START_WIN "starting window creation error"
+# define ERR_START_WIN "starting win creation error"
 # define ERR_MALLOC "memory allocation error"
 
 #endif
