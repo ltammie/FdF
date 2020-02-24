@@ -32,7 +32,7 @@ static	int		get_color(t_point p1, t_point p2)
 {
 	int color;
 
-	color = (p1.z || p2.z) ? 0xff0000 : 0xffffff;
+	color = (p1.z > p2.z) ? p1.color : p2.color;
 	return (color);
 }
 

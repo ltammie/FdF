@@ -6,7 +6,7 @@
 /*   By: sauron <sauron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 02:38:13 by sauron            #+#    #+#             */
-/*   Updated: 2020/02/24 18:15:44 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:21:06 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ static	void	to_points(char **strarr, t_mlx *data, int j)
 		data->m.m[j * data->m.mW + i].x = i;
 		data->m.m[j * data->m.mW + i].y = j;
 		data->m.m[j * data->m.mW + i].z = ft_atoi(strarr[i]);
+		if (ft_strchr(strarr[i], ','))
+			data->m.m[j * data->m.mW + i].color = ft_atoi_base(ft_strchr(strarr[i], ',') + 1);
+		else if (data->m.m[j * data->m.mW + i].z == 0)
+			data->m.m[j * data->m.mW + i].color = 0xd2691e;
+		else if (data->m.m[j * data->m.mW + i].z > 0)
+			data->m.m[j * data->m.mW + i].color = 0xbebebe;
+		else if (data->m.m[j * data->m.mW + i].z < 0)
+			data->m.m[j * data->m.mW + i].color = 0x1e90ff;
 		i++;
 	}
 }
@@ -48,7 +56,7 @@ static	void	make_grid(int fd, t_mlx *data)
 	char	**temp;
 
 	if (!(data->m.m = (t_point *)malloc(sizeof(t_point)
-										* data->m.mH * data->m.mW)))
+			* data->m.mH * data->m.mW)))
 		suicide(ERR_MALLOC);
 	j = 0;
 	while (get_next_line(fd, &line))

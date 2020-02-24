@@ -127,5 +127,7 @@ void			close_fdf(t_mlx *data);
 double			dtr(double degrees);
 double			rtd(double radians);
 void			suicide(char *error_text);
+int				base(int c, int base);
+int				ft_atoi_base(const char *str);
 
 #endif
