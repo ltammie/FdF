@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 19:20:54 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 19:30:15 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 #include <stdio.h>
 #include "../minilibx/mlx.h"
 #include "../libft/libft.h"
-#include "errors.h"
 #include "keys.h"
 
 typedef struct	s_image
