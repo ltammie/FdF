@@ -6,13 +6,13 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:01:33 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:25:07 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:27:02 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-void	draw_background(t_mlx *data)
+void			draw_background(t_mlx *data)
 {
 	int i;
 	int j;
@@ -41,9 +41,9 @@ static	void	draw_horizontal_line(t_mlx *d, int i, int j)
 	int	color;
 
 	color = get_color(d->m.m[i * d->m.mW + j],
-					  d->m.m[i * d->m.mW + (j + 1)]);
+			d->m.m[i * d->m.mW + (j + 1)]);
 	dda(d, d->m.m[i * d->m.mW + j],
-		d->m.m[i * d->m.mW + (j + 1)], color);
+			d->m.m[i * d->m.mW + (j + 1)], color);
 }
 
 static	void	draw_vertical_line(t_mlx *d, int i, int j)
@@ -51,16 +51,15 @@ static	void	draw_vertical_line(t_mlx *d, int i, int j)
 	int	color;
 
 	color = get_color(d->m.m[i * d->m.mW + j],
-					  d->m.m[(i + 1) * d->m.mW + j]);
+			d->m.m[(i + 1) * d->m.mW + j]);
 	dda(d, d->m.m[i * d->m.mW + j],
-		d->m.m[(i + 1) * d->m.mW + j], color);
+			d->m.m[(i + 1) * d->m.mW + j], color);
 }
 
 void			draw_image(t_mlx *d)
 {
 	int	i;
 	int	j;
-
 
 	image_init(d);
 	i = -1;
@@ -70,13 +69,9 @@ void			draw_image(t_mlx *d)
 		while (++j < d->m.mW)
 		{
 			if (j < d->m.mW - 1)
-			{
 				draw_horizontal_line(d, i, j);
-			}
 			if (i < d->m.mH - 1)
-			{
-				draw_vertical_line(d, i ,j);
-			}
+				draw_vertical_line(d, i, j);
 		}
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 0, 0);
