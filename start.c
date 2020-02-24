@@ -6,11 +6,19 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:16:18 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:18:56 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+
+void	image_init(t_mlx *data)
+{
+	data->img.img_ptr = mlx_new_image(data->mlx, imW, imH);
+	data->img.img_data = (int *)mlx_get_data_addr(data->img.img_ptr,
+												  &data->img.bpp, &data->img.size_l, &data->img.endian);
+	draw_background(data);
+}
 
 void	camera_update(t_mlx *data)
 {

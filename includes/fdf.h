@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:19:53 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:20:33 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct	s_mlx
 
 t_mlx			*start(void);
 void			camera_init(t_mlx *data);
+void			image_init(t_mlx *data);
 void			read_map_data(char *filename, t_mlx *data);
 void			camera_update(t_mlx *data);
 
@@ -99,6 +100,7 @@ void			camera_update(t_mlx *data);
 
 void			dda(t_mlx *data, t_point p1, t_point p2, int color);
 void			draw_image(t_mlx *d);
+void			draw_background(t_mlx *data);
 void			rotate_x(double *y, double *z, t_mlx *data);
 void			rotate_y(double *x, double *z, t_mlx *data);
 void			rotate_z(double *x, double *y, t_mlx *data);

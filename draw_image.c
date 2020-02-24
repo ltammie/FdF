@@ -6,13 +6,13 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:01:33 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:20:33 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 18:25:07 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
 
-static	void	draw_background(t_mlx *data)
+void	draw_background(t_mlx *data)
 {
 	int i;
 	int j;
@@ -28,14 +28,6 @@ static	void	draw_background(t_mlx *data)
 	}
 }
 
-static	void	image_init(t_mlx *data)
-{
-	data->img.img_ptr = mlx_new_image(data->mlx, imW, imH);
-	data->img.img_data = (int *)mlx_get_data_addr(data->img.img_ptr,
-			&data->img.bpp, &data->img.size_l, &data->img.endian);
-	draw_background(data);
-}
-
 static	int		get_color(t_point p1, t_point p2)
 {
 	int color;
@@ -44,11 +36,31 @@ static	int		get_color(t_point p1, t_point p2)
 	return (color);
 }
 
+static	void	draw_horizontal_line(t_mlx *d, int i, int j)
+{
+	int	color;
+
+	color = get_color(d->m.m[i * d->m.mW + j],
+					  d->m.m[i * d->m.mW + (j + 1)]);
+	dda(d, d->m.m[i * d->m.mW + j],
+		d->m.m[i * d->m.mW + (j + 1)], color);
+}
+
+static	void	draw_vertical_line(t_mlx *d, int i, int j)
+{
+	int	color;
+
+	color = get_color(d->m.m[i * d->m.mW + j],
+					  d->m.m[(i + 1) * d->m.mW + j]);
+	dda(d, d->m.m[i * d->m.mW + j],
+		d->m.m[(i + 1) * d->m.mW + j], color);
+}
+
 void			draw_image(t_mlx *d)
 {
 	int	i;
 	int	j;
-	int	color;
+
 
 	image_init(d);
 	i = -1;
@@ -59,17 +71,11 @@ void			draw_image(t_mlx *d)
 		{
 			if (j < d->m.mW - 1)
 			{
-				color = get_color(d->m.m[i * d->m.mW + j],
-						d->m.m[i * d->m.mW + (j + 1)]);
-				dda(d, d->m.m[i * d->m.mW + j],
-						d->m.m[i * d->m.mW + (j + 1)], color);
+				draw_horizontal_line(d, i, j);
 			}
 			if (i < d->m.mH - 1)
 			{
-				color = get_color(d->m.m[i * d->m.mW + j],
-						d->m.m[(i + 1) * d->m.mW + j]);
-				dda(d, d->m.m[i * d->m.mW + j],
-						d->m.m[(i + 1) * d->m.mW + j], color);
+				draw_vertical_line(d, i ,j);
 			}
 		}
 	}
