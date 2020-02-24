@@ -14,9 +14,9 @@
 #define	SPACE 49
 #define MIN 27
 #define PlUS 24
-#define	ARROW_UP 126
-#define	ARROW_DOWN 125
-#define	ARROW_LEFT 123
-#define	ARROW_RIGHT 124
+#define	AR_UP 126
+#define	AR_DOWN 125
+#define	AR_LEFT 123
+#define	AR_RIGHT 124
 
 #endif

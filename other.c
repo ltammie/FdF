@@ -12,12 +12,12 @@
 
 #include "includes/fdf.h"
 
-float	dtr(float degrees)
+double	dtr(double degrees)
 {
 	return ((degrees) * M_PI / 180);
 }
 
-float	rtd(float radians)
+double	rtd(double radians)
 {
 	return ((radians) * 180 / M_PI);
 }

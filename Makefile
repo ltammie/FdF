@@ -20,7 +20,8 @@ SRCS = main.c\
 		read_map_data.c\
 		controls.c\
 		other.c\
-		projections.c
+		projections.c\
+		rotations.c
 OBJS = $(SRCS:.c=.o)
 HEAD = -c -I fdf.h
 LIB = -L libft -lft -L minilibx -lmlx -framework OpenGL -framework Appkit

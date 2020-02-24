@@ -12,41 +12,6 @@
 
 #include "includes/fdf.h"
 
-static void rotate_x(double *y, double *z, t_mlx *data)
-{
-	double prev_y;
-	double x_angle;
-
-	prev_y = *y;
-	x_angle = dtr(data->cam.x_angle);
-	*y = prev_y * cos(x_angle) + *z * sin(x_angle);
-	*z = -prev_y * sin(x_angle) + *z * cos(x_angle);
-}
-
-static void rotate_y(double *x, double *z, t_mlx *data)
-{
-	double prev_x;
-	double y_angle;
-
-	prev_x = *x;
-	y_angle = dtr(data->cam.y_angle);
-	*x = prev_x * cos(y_angle) + *z * sin(y_angle);
-	*z = -prev_x * sin(y_angle) + *z * cos(y_angle);
-}
-
-static void rotate_z(double *x, double *y, t_mlx *data)
-{
-	double prev_x;
-	double prev_y;
-	double z_angle;
-
-	prev_x = *x;
-	prev_y = *y;
-	z_angle = dtr(data->cam.z_angle);
-	*x = prev_x * cos(z_angle) - prev_y * sin(z_angle);
-	*y = prev_x * sin(z_angle) + prev_y * cos(z_angle);
-}
-
 void	dda(t_mlx *data, t_point p1, t_point p2)
 {
 	double dx;

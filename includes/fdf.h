@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/01 04:39:39 by sauron           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:33:42 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define oblique_angle 60.0
 
 #include <math.h>
+#include <stdio.h>
 #include "../minilibx/mlx.h"
 #include "../libft/libft.h"
 #include "errors.h"
@@ -65,6 +66,12 @@ typedef struct	s_cam
 	double		x_angle;
 	double 		y_angle;
 	double		z_angle;
+	double 		x_sin;
+	double 		x_cos;
+	double 		y_sin;
+	double 		y_cos;
+	double 		z_sin;
+	double 		z_cos;
 	char 		projection;
 }				t_cam;
 
@@ -81,9 +88,10 @@ typedef struct	s_mlx
  ** ----------start functions---------
  */
 
-t_mlx			*start();
+t_mlx			*start(void);
 void			camera_init(t_mlx *data);
 void			read_map_data(char *filename, t_mlx *data);
+void			camera_update(t_mlx *data);
 
 /*
  ** ----------drawing---------
@@ -91,6 +99,9 @@ void			read_map_data(char *filename, t_mlx *data);
 
 void			dda(t_mlx *data, t_point p1, t_point p2);
 void			draw_image(t_mlx *data);
+void			rotate_x(double *y, double *z, t_mlx *data);
+void			rotate_y(double *x, double *z, t_mlx *data);
+void			rotate_z(double *x, double *y, t_mlx *data);
 void			iso(double *x, double *y, int z);
 void			cavalier(double *x, double *y, int z);
 void			cabinet(double *x, double *y, int z);
@@ -109,8 +120,8 @@ void			close_fdf(t_mlx *data);
  ** ----------other----------
  */
 
-float			dtr(float degrees);
-float			rtd(float radians);
+double			dtr(double degrees);
+double			rtd(double radians);
 void			suicide(char *error_text);
 
 #endif
