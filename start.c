@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 18:55:55 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 19:33:12 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:28:19 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	image_init(t_mlx *data)
 {
-	data->img.img_ptr = mlx_new_image(data->mlx, imW, imH);
+	data->img.img_ptr = mlx_new_image(data->mlx, IMW, IMH);
 	data->img.img_data = (int *)mlx_get_data_addr(data->img.img_ptr,
 			&data->img.bpp, &data->img.size_l, &data->img.endian);
 	draw_background(data);
@@ -44,13 +44,14 @@ void	camera_init(t_mlx *data)
 
 void	draw_menu(t_mlx *d)
 {
-	mlx_string_put(d->mlx, d->win, 50, 50, 0xff0000, " Move image by arrows");
-	mlx_string_put(d->mlx, d->win, 50, 90, 0xff0000, " X-Rotation by A and D");
+	mlx_string_put(d->mlx, d->win, 50, 50, 0xff0000, "Move image by arrows");
+	mlx_string_put(d->mlx, d->win, 50, 90, 0xff0000, "X-Rotation by A and D");
 	mlx_string_put(d->mlx, d->win, 50, 140, 0xff0000, "Y-Rotation by W and S");
 	mlx_string_put(d->mlx, d->win, 50, 180, 0xff0000, "Z-Rotation by Q and E");
 	mlx_string_put(d->mlx, d->win, 50, 220, 0xff0000, "Zoom using - and +");
 	mlx_string_put(d->mlx, d->win, 50, 260, 0xff0000, "Change Z by R and F");
-	mlx_string_put(d->mlx, d->win, 50, 300, 0xff0000, "Press ESC to exit");
+	mlx_string_put(d->mlx, d->win, 50, 300, 0xff0000, "Swap projections by P");
+	mlx_string_put(d->mlx, d->win, 50, 340, 0xff0000, "Press ESC to exit");
 }
 
 t_mlx	*start(void)

@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:01:33 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:36:58 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:28:57 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void			draw_background(t_mlx *data)
 	int j;
 
 	i = -1;
-	while (++i < imH)
+	while (++i < IMH)
 	{
 		j = -1;
-		while (++j < imW)
+		while (++j < IMW)
 		{
-			data->img.img_data[i * imW + j] = 0;
+			data->img.img_data[i * IMW + j] = 0x000015;
 		}
 	}
 }
@@ -40,20 +40,20 @@ static	void	draw_horizontal_line(t_mlx *d, int i, int j)
 {
 	int	color;
 
-	color = get_color(d->m.m[i * d->m.mW + j],
-			d->m.m[i * d->m.mW + (j + 1)]);
-	dda(d, d->m.m[i * d->m.mW + j],
-			d->m.m[i * d->m.mW + (j + 1)], color);
+	color = get_color(d->m.m[i * d->m.mw + j],
+			d->m.m[i * d->m.mw + (j + 1)]);
+	dda(d, d->m.m[i * d->m.mw + j],
+		d->m.m[i * d->m.mw + (j + 1)], color);
 }
 
 static	void	draw_vertical_line(t_mlx *d, int i, int j)
 {
 	int	color;
 
-	color = get_color(d->m.m[i * d->m.mW + j],
-			d->m.m[(i + 1) * d->m.mW + j]);
-	dda(d, d->m.m[i * d->m.mW + j],
-			d->m.m[(i + 1) * d->m.mW + j], color);
+	color = get_color(d->m.m[i * d->m.mw + j],
+			d->m.m[(i + 1) * d->m.mw + j]);
+	dda(d, d->m.m[i * d->m.mw + j],
+		d->m.m[(i + 1) * d->m.mw + j], color);
 }
 
 void			draw_image(t_mlx *d)
@@ -63,17 +63,17 @@ void			draw_image(t_mlx *d)
 
 	image_init(d);
 	i = -1;
-	while (++i < d->m.mH)
+	while (++i < d->m.mh)
 	{
 		j = -1;
-		while (++j < d->m.mW)
+		while (++j < d->m.mw)
 		{
-			if (j < d->m.mW - 1)
+			if (j < d->m.mw - 1)
 				draw_horizontal_line(d, i, j);
-			if (i < d->m.mH - 1)
+			if (i < d->m.mh - 1)
 				draw_vertical_line(d, i, j);
 		}
 	}
-	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 200, 200);
+	mlx_put_image_to_window(d->mlx, d->win, d->img.img_ptr, 300, 100);
 	draw_menu(d);
 }

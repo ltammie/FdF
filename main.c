@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 16:33:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 19:45:09 by ltammie          ###   ########.fr       */
+/*   Created: 2020/02/24 20:33:48 by ltammie           #+#    #+#             */
+/*   Updated: 2020/02/24 20:33:48 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		key_press(int key, t_mlx *data)
 {
 	if (key == AR_LEFT || key == AR_RIGHT || key == AR_DOWN || key == AR_UP)
 		move(key, data);
-	if (key == MIN || key == PlUS)
+	if (key == MIN || key == PLUS)
 		zoom(key, data);
 	if (key == A || key == S || key == D || key == Q || key == W || key == E)
 		rotate(key, data);
@@ -26,12 +26,8 @@ int		key_press(int key, t_mlx *data)
 	{
 		camera_init(data);
 		if (data->cam.proj == 'I')
-			data->cam.proj = 'C';
-		else if (data->cam.proj == 'C')
-			data->cam.proj = 'V';
-		else if (data->cam.proj == 'V')
-			data->cam.proj = 'L';
-		else
+			data->cam.proj = 'P';
+		else if (data->cam.proj == 'P')
 			data->cam.proj = 'I';
 		mlx_clear_window(data->mlx, data->win);
 		draw_image(data);

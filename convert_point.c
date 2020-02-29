@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:51:12 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:10:34 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:28:19 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static	void	rotate_points(t_mlx *data, t_point *p1, t_point *p2)
 
 static	void	shift_points(t_mlx *data, t_point *p1, t_point *p2)
 {
-	p1->x += (float)imW / 2.0f;
-	p1->y += (float)imH / 2.0f;
-	p2->x += (float)imW / 2.0f;
-	p2->y += (float)imH / 2.0f;
+	p1->x += (float)IMW / 2.0f;
+	p1->y += (float)IMH / 2.0f;
+	p2->x += (float)IMW / 2.0f;
+	p2->y += (float)IMH / 2.0f;
 	p1->x += data->cam.x_shift;
 	p1->y += data->cam.y_shift;
 	p2->x += data->cam.x_shift;
@@ -52,21 +52,6 @@ void			point_convert(t_mlx *data, t_point *p1, t_point *p2)
 	{
 		iso(&p1->x, &p1->y, p1->z);
 		iso(&p2->x, &p2->y, p2->z);
-	}
-	else if (data->cam.proj == 'C')
-	{
-		cavalier(&p1->x, &p1->y, p1->z);
-		cavalier(&p2->x, &p2->y, p2->z);
-	}
-	else if (data->cam.proj == 'V')
-	{
-		cabinet(&p1->x, &p1->y, p1->z);
-		cabinet(&p2->x, &p2->y, p2->z);
-	}
-	else if (data->cam.proj == 'L')
-	{
-		perspective(&p1->x, &p1->y, &p1->z);
-		perspective(&p2->x, &p2->y, &p2->z);
 	}
 	shift_points(data, p1, p2);
 }

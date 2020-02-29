@@ -19,8 +19,8 @@ void	iso(double *x, double *y, double z)
 
 	prev_x = *x;
 	prev_y = *y;
-	*x = (prev_x - prev_y) * cos(dtr(iso_angle));
-	*y = (prev_x + prev_y) * sin(dtr(iso_angle)) - z;
+	*x = (prev_x - prev_y) * cos(dtr(ISO_ANGLE));
+	*y = (prev_x + prev_y) * sin(dtr(ISO_ANGLE)) - z;
 }
 
 void	cavalier(double *x, double *y, double z)
@@ -30,8 +30,8 @@ void	cavalier(double *x, double *y, double z)
 
 	prev_x = *x;
 	prev_y = *y;
-	*x = prev_x + z * 1 * cos(dtr(oblique_angle));
-	*y = prev_y + z * 1 * sin(dtr(oblique_angle));
+	*x = prev_x + z * 1 * cos(dtr(OBLIQUE_ANGLE));
+	*y = prev_y + z * 1 * sin(dtr(OBLIQUE_ANGLE));
 }
 
 void	cabinet(double *x, double *y, double z)
@@ -41,8 +41,8 @@ void	cabinet(double *x, double *y, double z)
 
 	prev_x = *x;
 	prev_y = *y;
-	*x = prev_x + z * 0.5 * cos(dtr(oblique_angle));
-	*y = prev_y + z * 0.5 * sin(dtr(oblique_angle));
+	*x = prev_x + z * 0.5 * cos(dtr(OBLIQUE_ANGLE));
+	*y = prev_y + z * 0.5 * sin(dtr(OBLIQUE_ANGLE));
 }
 
 void	perspective(double *x, double *y, double *z)

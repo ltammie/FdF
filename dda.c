@@ -6,7 +6,7 @@
 /*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:29:39 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 18:16:51 by ltammie          ###   ########.fr       */
+/*   Updated: 2020/02/24 20:28:19 by ltammie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	void	set_pixel(int x, int y, t_mlx *data, int color)
 {
-	if (x >= 0 && x < imW && y >= 0 && y < imH)
-		data->img.img_data[y * imW + x] = color;
+	if (x >= 0 && x < IMW && y >= 0 && y < IMH)
+		data->img.img_data[y * IMW + x] = color;
 }
 
 void			dda(t_mlx *data, t_point p1, t_point p2, int color)
