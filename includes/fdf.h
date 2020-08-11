@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 18:55:58 by ltammie           #+#    #+#             */
-/*   Updated: 2020/02/24 20:31:08 by ltammie          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FDF_FDF_H
 # define FDF_FDF_H
 
@@ -22,7 +10,7 @@
 
 # include <math.h>
 # include "../minilibx/mlx.h"
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include "keys.h"
 
 typedef struct	s_image

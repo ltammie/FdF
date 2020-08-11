@@ -1,43 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ltammie <ltammie@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/07 19:18:13 by ltammie           #+#    #+#              #
-#    Updated: 2020/02/24 20:25:56 by ltammie          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 GCC = gcc -Wall -Wextra -Werror
+
 NAME = fdf
-SRCS = main.c\
-		start.c\
-		dda.c\
-		draw_image.c\
-		read_map_data.c\
-		controls.c\
-		other.c\
-		projections.c\
-		rotations.c\
-		convert_point.c\
-		error.c
+
+INC_DIR = includes/
+SRC_DIR = src/
+
+SRCS = $(SRC_DIR)main.c\
+		$(SRC_DIR)start.c\
+		$(SRC_DIR)dda.c\
+		$(SRC_DIR)draw_image.c\
+		$(SRC_DIR)read_map_data.c\
+		$(SRC_DIR)controls.c\
+		$(SRC_DIR)other.c\
+		$(SRC_DIR)projections.c\
+		$(SRC_DIR)rotations.c\
+		$(SRC_DIR)convert_point.c\
+		$(SRC_DIR)error.c
+
 OBJS = $(SRCS:.c=.o)
-HEAD = -c -I fdf.h
 LIB = -L libft -lft -L minilibx -lmlx -framework OpenGL -framework Appkit
 
 all: $(NAME)
 
 %.o: %.c
-		$(GCC) -c $<
+		$(GCC) -c $< -o $@ -I $(INC_DIR)
 
 lib:
 		make -C libft
 		make -C minilibx
 
-$(NAME): $(OBJS) lib
+$(NAME): $(OBJS) $(INC_DIR)fdf.h $(INC_DIR)keys.h lib
 		$(GCC) $(OBJS) $(LIB) -o $(NAME)
 
 clean:
