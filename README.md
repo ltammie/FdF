@@ -8,9 +8,9 @@ Project about creating a simplified 3D graphic representation of a relief landsc
 
 # Usage
 Run:
-'''
+```
 git clone --recursive https://github.com/ltammie/FdF.git && cd FdF && make -s && make clean -s
-'''
+```
 To start a program:
 ```
 ./fdf test_maps/mars.fdf
