@@ -28,8 +28,8 @@ You can choose any maps in *test_maps* folder. Go on and try!
 * **ESC** to exit
 
 # Examples
-* ![](https://github.com/ltammie/FdF/tree/master/ex/1.png)
-* ![](https://github.com/ltammie/FdF/tree/master/ex/2.png)
-* ![](https://github.com/ltammie/FdF/tree/master/ex/3.png)
-* ![](https://github.com/ltammie/FdF/tree/master/ex/4.png)
-* ![](https://github.com/ltammie/FdF/tree/master/ex/5.png)
+* ![](https://github.com/ltammie/FdF/blob/master/ex/1.png)
+* ![](https://github.com/ltammie/FdF/blob/master/ex/2.png)
+* ![](https://github.com/ltammie/FdF/blob/master/ex/3.png)
+* ![](https://github.com/ltammie/FdF/blob/master/ex/4.png)
+* ![](https://github.com/ltammie/FdF/blob/master/ex/5.png)
