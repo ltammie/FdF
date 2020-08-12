@@ -16,3 +16,15 @@ To start a program:
 ./fdf test_maps/mars.fdf
 ```
 You can choose any maps in *test_maps* folder. Go on and try!
+
+# Controls
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
